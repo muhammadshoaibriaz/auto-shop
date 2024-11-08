@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>my account</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        .header {
+            width: 100%;
+            height: 6vh;
+            background-color: #111;
+            padding: 10px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header .content {
+            width: 90%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .content .left {
+            width: 40%;
+            justify-content: space-between;
+            display: flex;
+        }
+
+        .header .content p {
+            font-size: 14px;
+            color: white;
+        }
+
+        .header .content .left .icon {
+            display: flex;
+            width: 80%;
+            /* background-color: gold; */
+            /* justify-content: space-between; */
+        }
+
+        .header .content .left .icon:nth-child(2) {
+            margin-left: 20px;
+        }
+
+        .header .content .left .icon i {
+            color: red;
+            margin-right: 10px;
+        }
+
+        .header .content .right {
+            color: #fff;
+            display: flex;
+        }
+
+        .header .content .right h4 {
+            color: #fff;
+            display: flex;
+            font-weight: lighter;
+            font-size: 14px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .header .content .right h4:nth-child(2):hover {
+            color: red;
+        }
+
+        .seach_bar {
+            width: 100%;
+            height: 10vh;
+            background-color: rgb(255, 255, 255);
+            padding: 10px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .seach_bar .content {
+            width: 90%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .seach_bar .content .left {
+            width: 40%;
+            justify-content: space-between;
+            display: flex;
+        }
+
+        .seach_bar .content .left .input_area {
+            width: 100%;
+            justify-content: space-between;
+            display: flex;
+            align-items: center;
+            padding-right: 10px;
+            border: 1px solid rgb(228, 228, 228);
+            border-radius: 5px;
+        }
+
+        .seach_bar .content .left .input_area input {
+            width: 100%;
+            padding: 10px;
+            outline: none;
+            border-radius: 5px;
+            border: none;
+            padding-left: 12px;
+            font-size: 16px;
+        }
+
+        .seach_bar .content .left .input_area i {
+            color: rgb(181, 181, 181);
+            /* margin-right: 10px; */
+        }
+
+        .seach_bar .content .right {
+            width: 30%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .seach_bar .content .right .item {
+            /* width: 25%; */
+            display: flex;
+            cursor: pointer;
+            align-items: center;
+        }
+
+        .seach_bar .content .right .item:hover i {
+            color: red;
+        }
+
+        .seach_bar .content .right .item:hover p {
+            color: red;
+        }
+
+        .seach_bar .content .right .item i {
+            margin-right: 5px;
+        }
+
+        .seach_bar .content .right .item:nth-child(3) {
+            background-color: red;
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: #fff;
+            border: 2px solid rgb(255, 164, 164);
+            font-size: 16px;
+        }
+
+        .seach_bar .content .right .item:nth-child(3):hover {
+            background-color: rgb(255, 60, 0);
+        }
+
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgb(246, 247, 253);
+            padding-left: 40px;
+            padding-right: 40px;
+            height: 10vh;
+        }
+
+        header .center {
+            width: 35%;
+        }
+
+        header .center img {
+            width: 100px;
+            pointer-events: none;
+        }
+
+        header .center ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .center ul li {
+            list-style-type: none;
+
+        }
+
+        header .center ul li a {
+            text-decoration: none;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 18px;
+            color: black;
+        }
+
+        #home1 {
+            display: none;
+            background-color: #fff;
+            width: 160px;
+            height: auto;
+            border-radius: 5px;
+            position: absolute;
+            z-index: 1;
+            /* box-shadow: 4px 4px 15px #ececec; */
+        }
+
+        #home1 li {
+            padding: 10px;
+            width: 100%;
+            padding-left: 10px;
+        }
+
+        #home1 li a {
+            transition: all .5s;
+            padding-left: 10px;
+        }
+
+        #home1 li:hover a {
+            margin-left: 5px;
+            color: red;
+        }
+
+        #home2 {
+            display: flex;
+            /* visibility: hidden; */
+            background-color: #fff;
+            width: 200px;
+            border-radius: 5px;
+            position: absolute;
+            justify-content: space-between;
+            /* padding: 20px; */
+            z-index: 1;
+            display: none;
+            /* box-shadow: 4px 4px 15px #ececec; */
+        }
+
+        #home2 #home {
+            width: 100%;
+            flex-direction: column;
+        }
+
+        #home2 #home li {
+            transition: all .5s;
+            padding: 10px;
+            width: 100%;
+        }
+
+
+        #home2 #home li a {
+            /* color: grey; */
+            width: 100%;
+            padding-left: 10px;
+            transition: all .5s;
+        }
+
+        #home2 #home li:hover a {
+            color: red;
+            margin-left: 6px;
+        }
+
+
+        header .center ul li a:hover {
+            color: #999;
+            z-index: 1;
+        }
+
+        header ul li:nth-child(1):hover #home1 {
+            display: block;
+        }
+
+        header ul li:nth-child(2):hover #home2 {
+            display: block;
+        }
+
+        header ul li:nth-child(3):hover #home1 {
+            display: block;
+        }
+
+        header ul li:nth-child(4):hover #home1 {
+            display: block;
+            width: 200px;
+        }
+
+        .home_screen {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            min-height: 50vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('peter-broomfield-m3m-lnR90uM-unsplash.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            background-clip: content-box;
+
+        }
+
+        .home_screen h1 {
+            font-size: 50px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: #fff;
+        }
+
+        .home_screen p {
+            font-size: 20px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: #fff;
+            font-weight: 800;
+            /* bottom: 60px; */
+            position: relative;
+        }
+
+        .home_screen button {
+            width: 150px;
+            height: 40px;
+            background-color: red;
+            border: 2px solid rgb(255, 60, 0);
+            outline: none;
+            color: #fff;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 16px;
+            /* border-radius: 5px; */
+        }
+
+        .home_screen .combobox {
+            width: 56%;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .home_screen .navigate {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .home_screen .navigate a {
+            color: rgb(255, 0, 0);
+            text-decoration: none;
+            padding-left: 5px;
+            margin-left: 6px;
+            border-left: 1px solid #fff;
+            margin-top: 2px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .footer {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('peter-broomfield-m3m-lnR90uM-unsplash.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            padding-top: 30px;
+        }
+
+        .footers {
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .footers .footer_inner {
+            width: 90%;
+            display: flex;
+            flex-direction: row;
+            min-height: 50vh;
+            justify-content: space-between;
+        }
+
+        .footers .footer_inner .links {
+            width: 20%;
+        }
+
+        .footers .footer_inner .links h1 {
+            font-size: 25px;
+            color: #fff;
+            position: relative;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin-bottom: 10px;
+        }
+
+        .footers .footer_inner .links h1::before {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 2px;
+            background-color: red;
+            bottom: -5px;
+            left: 0px;
+            /* margin-top: px; */
+        }
+
+        #phone {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 20px;
+
+        }
+
+        .footers .footer_inner .links ul {
+            display: block;
+            margin-top: 20px;
+        }
+
+        .footers .footer_inner .links ul li {
+            padding: 5px;
+            list-style: none;
+        }
+
+        .footers .footer_inner .links ul li a {
+            text-decoration: none;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: #fff;
+        }
+
+        .footers .footer_inner .links ul li:hover a {
+            color: rgb(196, 0, 0);
+        }
+
+        .footers .footer_inner .links .input {
+            width: 100%;
+            height: 30px;
+            border: 1px solid rgb(209, 209, 209);
+            outline: none;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .footers .footer_inner .links input {
+            width: 80%;
+            padding-left: 10px;
+            height: 100%;
+            outline: none;
+            border: none;
+        }
+
+        .footers .footer_inner .links button {
+            width: 20%;
+            background: black;
+            height: 100%;
+            outline: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footers .footer_inner .links button i {
+            color: #fff;
+        }
+
+        .footers .footer_inner .links h4 {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin-top: 20px;
+        }
+
+        .footers .footer_inner .links #icon {
+            display: flex;
+            flex-direction: row;
+            width: 65%;
+            justify-content: space-between;
+        }
+
+        .copyright {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            padding-left: 5%;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container .content {
+            width: 90%;
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+
+        .container .content h2,
+        p {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .container .content p {
+            color: rgb(90, 90, 90);
+            margin-bottom: 20px;
+            word-spacing: 4px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .container .content h2 {
+            margin-bottom: 10px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="content">
+            <div class="left">
+                <div class="icon">
+                    <i class="fa fa-location"></i>
+                    <p>Central Bazar main road, Khanewal</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-clock"></i>
+                    <p>Monday 8AM to 12Pm</p>
+                </div>
+            </div>
+            <div class="right">
+                <h4>Currency <span>USD</span></h4>
+                <h4>Languages</h4>
+                <select name="" id="select">
+                    <!-- <option value="Pakistan">Languages</option> -->
+                    <option value="Pakistan">🇬🇧English (UK)</option>
+                    <option value="Pakistan">🇵🇰Urdu</option>
+                    <option value="Pakistan">🇧🇩Bangladesh</option>
+                    <option value="Pakistan">🇵🇹Turky</option>
+                    <option value="Pakistan">🇸🇦Arabic</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="seach_bar">
+        <div class="content">
+            <div class="left">
+                <div class="input_area">
+                    <input type="text" placeholder="Search by keywords">
+                    <i class="fa fa-search"></i>
+                </div>
+            </div>
+            <div class="right">
+                <div class="item">
+                    <i class="fa fa-heart"></i>
+                    <p>Wishlist</p>
+                </div>
+                <div class="item">
+                    <i class="fa-sharp fa-solid fa-cart-plus"></i>
+                    <p>Add to Cart</p>
+                </div>
+                <div class="item">
+                    <i class="fa fa-sign-in"></i>
+                    <p>Register/Login</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="left_side">
+            <h1> <span style="color: red;font-size: 38px;">M</span>a<span span style="color: red;">x</span>con</h1>
+        </div>
+        <div class="center">
+            <ul id="header">
+                <li><a href="#">Home <i class="fa fa-angle-down"></i></a>
+                    <ul id="home1">
+                        <li><a href="#">Home 1</a></li>
+                        <li><a href="#">Home 2</a></li>
+                        <li><a href="#">Home 3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Pages <i class="fa fa-angle-down"></i></a>
+                    <div id="home2">
+                        <ul id="home">
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Pages</a></li>
+                            <li><a href="#">Our Team</a></li>
+                            <li><a href="#">Gallery </a></li>
+                            <li><a href="#">Compare</a></li>
+                            <li><a href="#">Order Tracking</a></li>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Error Page</a></li>
+                            <li><a href="#">Coming Soon</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#">Shop <i class="fa fa-angle-down"></i></a>
+                    <ul id="home1">
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">Cart</a></li>
+                        <li><a href="#">Wishlist</a></li>
+                        <li><a href="#">Checkout</a></li>
+                        <li><a href="#">Product Details</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Blog <i class="fa fa-angle-down"></i></a>
+                    <ul id="home1">
+                        <li><a href="#">Blod</a></li>
+                        <li><a href="#">Blog Right Sidebar</a></li>
+                        <li><a href="#">Blog Details</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="right_side">
+            <p style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">000 435 656 4343</p>
+        </div>
+    </header>
+    <section class="home_screen">
+        <h1>Privacy Policy</h1>
+        <div class="navigate">
+            <p>Home</p>
+            <a href="#">Privacy Policy</a>
+        </div>
+    </section>
+    <section class="container">
+        <div class="content">
+            <h2>Collection of Information</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo voluptates, corrupti ullam dignissimos
+                fugiat accusantium voluptate culpa odit odio, reiciendis adipisci sapiente eius aliquam libero
+                architecto necessitatibus vel laudantium, a deleniti ipsa nulla molestias? Modi ipsum praesentium iste
+                placeat totam at. Molestias, repellat repudiandae voluptates vero incidunt nisi laudantium hic itaque
+                aperiam dolore! Error impedit earum molestias nisi, dignissimos, porro quae iure eos distinctio, nihil
+                ipsum labore maxime facilis quaerat autem culpa repellat. Odit ad sint possimus, ullam neque dolorum
+                harum voluptas eos animi ut illo labore dignissimos natus nulla quasi incidunt dolor voluptatibus
+                nesciunt provident repudiandae sed nemo. Et!</p>
+            <h2>Use of Personal Data</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut abore et
+                dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea com
+                modo consequat.
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore fugiat nulla pariatur.
+                Excepteur sint
+                occaecat cupidatat non proident. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut
+                aliquip ex ea com modo consequat.
+
+                It has survived not only five centuries, but also the leap into electronic typesetting.
+                Contrary to popular belief, Lorem Ipsum is not simply random text.
+                The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.
+                Various versions have evolved over the years, sometimes by accident sometimes on purpose.</p>
+            <h2>Rights Regarding Personal Data</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae culpa quam laboriosam minus veritatis
+                nostrum, distinctio perspiciatis repellendus ullam doloribus rerum architecto officiis dolorem ex quidem
+                qui asperiores quo odio. Nemo, a eveniet facere commodi amet neque id, aspernatur vitae repellendus
+                explicabo magnam sapiente provident dolores officia voluptates eaque cupiditate.</p>
+            <h2>Security Measures</h2>
+            <p>means an entity that controls, is controlled by or is under common control with a party, where “control”
+                ownership ofor
+                more of the shares, equity interest or other securities entitled to vote for election of directors or
+                other managing
+                authority.</p>
+            <h2>Changes to this Privacy Poligy</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut abore et
+                dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea com
+                modo consequat.
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore fugiat nulla pariatur.
+                Excepteur sint
+                occaecat cupidatat non proident.</p>
+            <h2>How We Protect Your Data</h2>
+            <p>means an entity that controls, is controlled by or is under common control with a party, where “control”
+                ownership ofor
+                more of the shares, equity interest or other securities entitled to vote for election of directors or
+                other managing
+                authority.</p>
+        </div>
+    </section>
+    <section class="footer">
+        <div class="footers">
+            <div class="footer_inner">
+                <div class="links">
+                    <h1
+                        style="color: #fff; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 40px;">
+                        <span style="color: red;font-size: 38px;">M</span>a<span span style="color: red;">x</span>con
+                    </h1>
+                    <p
+                        style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: #fff; margin-bottom: 10px;margin-top: 25px;">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit corporis molestias
+                        blanditiis, saepe dolore illo! Dolores explicabo.</p>
+                </div>
+                <div class="links">
+                    <h1>Company</h1>
+                    <ul>
+                        <li><i class="fa fa-angles-right" style="color: red; font-size: 14px; margin-right: 6px;"></i><a
+                                href="#">Home</a>
+                        </li>
+                        <li><i class="fa fa-angles-right" style="color: red; font-size: 14px; margin-right: 6px;"></i><a
+                                href="#">About
+                                us</a></li>
+                        <li><i class="fa fa-angles-right" style="color: red; font-size: 14px; margin-right: 6px;"></i><a
+                                href="#">Our blog
+                                Post</a>
+                        </li>
+                        <li><i class="fa fa-angles-right" style="color: red; font-size: 14px; margin-right: 6px;"></i><a
+                                href="#">Contact</a></li>
+                        <li><i class="fa fa-angles-right" style="color: red; font-size: 14px; margin-right: 6px;"></i><a
+                                href="#">Login</a>
+                        </li>
+                        <li><i class="fa fa-angles-right" style="color: red; font-size: 14px; margin-right: 6px;"></i><a
+                                href="#">Register</a></li>
+                        <li><i class="fa fa-angles-right" style="color: red; font-size: 14px; margin-right: 6px;"></i><a
+                                href="#">Shop</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="links">
+                    <h1>Information</h1>
+                    <ul>
+                        <li><i class="fa fa-angles-right" style="color: red; font-size: 14px; margin-right: 6px;"></i><a
+                                href="#">Terms & Condition</a></li>
+                        <li><i class="fa fa-angles-right" style="color: red; font-size: 14px; margin-right: 6px;"></i><a
+                                href="#">Style guide</a></li>
+                        <li>
+                            <i class="fa fa-angles-right" style="color: red; font-size: 14px; margin-right: 6px;"></i>
+                            <a href="#">FAQs</a>
+                        </li>
+                        <li><i class="fa fa-angles-right" style="color: red; font-size: 14px; margin-right: 6px;"></i><a
+                                href="#">Changelog
+                            </a></li>
+                        <li><i class="fa fa-angles-right" style="color: red; font-size: 14px; margin-right: 6px;"></i><a
+                                href="#">License</a></li>
+                    </ul>
+                </div>
+                <div class="links">
+                    <h1>Newsletter</h1>
+                    <p
+                        style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: #fff; margin-top: 10px;">
+                        Subscribe our newsletter and get our all latest information and offers</p>
+                    <div class="input">
+                        <input type="email" required placeholder="Email here">
+                        <button><i class="fa fa-arrow-right"></i></button>
+                    </div>
+                    <h4 style="color: #fff;">Follow us on</h4>
+                    <ul id="icon">
+                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="copyright">
+        <p>©CopyRights holder all rights Reserved 2021-2024</p>
+    </div>
+</body>
+
+</html>
